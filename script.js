@@ -10,8 +10,19 @@ sounds.forEach((sound) => {
 
   // for every button, we want to listen for a click. On that click, we want to get the button element by ID, and use audio element method, play()
   btn.addEventListener("click", () => {
+    stopSounds();
+
     document.getElementById(sound).play();
   });
 
   document.getElementById("buttons").appendChild(btn); // get the buttons container and append each btn to it
 });
+
+function stopSounds() {
+  sounds.forEach((sound) => {
+    const song = document.getElementById(sound);
+
+    song.pause();
+    song.currentTime = 0;
+  });
+}
